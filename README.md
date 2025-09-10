@@ -1,71 +1,103 @@
-# **UrbanWave MongoDB Project**
+# 🌊 UrbanWave – MongoDB Social Media Database
+## Project Link :-[AasthaVadher_1AUA22BIT134_BDA_Assignment4.pdf](https://github.com/user-attachments/files/22253619/AasthaVadher_1AUA22BIT134_BDA_Assignment4.pdf)
 
-## **Introduction**
-UrbanWave is a MongoDB-based **social media platform** designed to manage **users**, **posts**, and **followers**.  
-The project implements location-based discovery, analytics, and real-world social media features such as trending posts, engagement scores, and influencer tracking.  
+## 🔎 Overview
+UrbanWave is a **MongoDB-based project** that models a social media platform.  
+It is built to manage **users, posts, and followers**, with support for **location-based features, analytics, and performance optimization**.  
 
----
-
-## **Project Features**
-- 👥 **User Profiles** → with personal details, activity status, and location.  
-- 🎬 **Posts & Reels** → likes, comments, shares, views, captions, and hashtags.  
-- 🔗 **Followers & Following** → relationship management.  
-- 📍 **Geospatial Queries** → find nearest users, within radius, and across cities.  
-- 📊 **Analytics & Insights** → engagement, trending categories, top hashtags.  
-- ⚡ **Indexes** → improve performance on frequent queries.  
-- 📱 **Real-World Functionalities** → personalized feeds, trending sections, influencer discovery.  
+The project demonstrates how NoSQL databases can handle **real-world social media use cases**, including recommendations, trending insights, and influencer tracking.  
 
 ---
 
-## **Design Decisions**
-
-### 1. Collections
-- **Users** → stores account details, location (GeoJSON), screen time, and activity.  
-- **Posts** → stores posts/reels with metadata (likes, hashtags, createdAt).  
-- **Followers** → manages who follows whom.  
-
-### 2. Relationships with ObjectId
-- `userId` in **Posts** → links to `_id` in **Users**.  
-- `followerId` & `followingId` in **Followers** → link to **Users**.  
-- Ensures data remains consistent and connected.  
-
-### 3. Location Data
-- Stored in **GeoJSON** format.  
-- Enables queries like: *find users within 100km of Ahmedabad*.  
-
-### 4. Indexes for Speed
-- `2dsphere` index on **location** → for geospatial lookups.  
-- Indexes on `createdAt`, `followersCount`, `screenTime`, `username`.  
-- Boosts query performance in large datasets.  
-
-### 5. Aggregation for Analytics
-- Top 5 trending posts (by likes).  
-- Most active users (by number of posts).  
-- Top content categories.  
-- User engagement score (likes + comments + shares).  
-- Trending hashtags.  
-
-### 6. Scalability
-- Used **references** instead of embedding for flexibility.  
-- Prevents data duplication and supports future expansion.  
-
-### 7. Real-World Features
-- Trending hashtags & content.  
-- Influencer detection based on followers & engagement.  
-- Personalized recommendations using user interests & location.  
+## ✨ Key Highlights
+- 👤 **User Profiles** with personal details, interests, and activity.  
+- 🖼️ **Posts & Reels** with captions, hashtags, likes, shares, and views.  
+- 🔗 **Follower System** to manage connections.  
+- 🌍 **Geospatial Features** for nearby user discovery.  
+- 📈 **Analytics with Aggregation** to track trends and engagement.  
+- ⚡ **Performance Indexing** for scalable queries.  
+- 📱 **Real-world Social Features** like influencer ranking and personalized feeds.  
 
 ---
 
-## **Sample Queries**
-- Find all users from Mumbai.  
-- Get posts with more than 100 likes.  
-- Find users younger than 25.  
-- Get nearby users within 100km radius.  
-- Calculate distance between two users.  
+## 🗂️ Data Model
+
+### 👥 Users
+Stores key user information:  
+- Username, full name, email (unique)  
+- Age, bio, interests  
+- Location in **GeoJSON** format  
+- Screen time, follower/following counts  
+- Status and activity timestamps  
+
+### 🖼️ Posts
+Represents user-generated content:  
+- Linked to a specific `userId`  
+- Type: **post** or **reel**  
+- Content category, caption, hashtags  
+- Location (GeoJSON Point)  
+- Metrics: likes, comments, shares, views  
+- Creation date  
+
+### 🔗 Followers
+Manages social connections:  
+- `followerId` and `followingId`  
+- Relationship creation timestamp  
 
 ---
 
-## **Project Documentation**
-📄 Full report: [UrbanWave.pdf](https://github.com/user-attachments/files/22253163/UrbanWave.pdf)
+## ⚙️ Implementation Phases
+
+### 📌 Phase 1 – Setup & Data Population
+- Created **UrbanWave** database  
+- Collections: `users`, `posts`, `followers`  
+- Schema validation applied  
+- Inserted sample users, posts, and follower data  
+
+### 📌 Phase 2 – CRUD & Filtering
+- Manage user details  
+- Find and filter based on age, city, screen time  
+- Update user bios and interests  
+- Remove old posts  
+- Sort users by popularity  
+
+### 📌 Phase 3 – Geospatial Queries
+- Enabled **2dsphere indexing**  
+- Find nearest users  
+- Get users from multiple cities  
+- Calculate distances between users  
+
+### 📌 Phase 4 – Analytics & Insights
+- Top 5 most liked posts  
+- Most active users  
+- Trending content categories  
+- User engagement scores  
+- Popular hashtags  
+
+---
+
+## 💡 Special Features
+- 📍 **Location-aware recommendations**  
+- 🔥 **Trending insights** for content & hashtags  
+- ⭐ **Influencer ranking** based on followers & engagement  
+- 🚀 **Performance optimization** with smart indexing  
+- 📊 **Actionable analytics** for real-world scenarios  
+
+---
+
+## 📷 Screenshots
+ Schema
 
 
+ Users Data schema  <img width="1431" height="783" alt="Screenshot 2025-09-10 at 4 38 08 PM" src="https://github.com/user-attachments/assets/6f079cc4-ec91-4429-9f13-4ed9abb80b95" /> 
+Posts schema <img width="1431" height="783" alt="Screenshot 2025-09-10 at 4 40 49 PM" src="https://github.com/user-attachments/assets/15644f9e-29ac-4062-b63c-66b905d6bd63" />
+ Followers data Schema Dashboard <img width="1431" height="783" alt="Screenshot 2025-09-10 at 4 42 13 PM" src="https://github.com/user-attachments/assets/ed66ce85-a617-4131-a4f6-031e2b482b6c" />
+
+
+
+## 🚀 Running the Project
+1. Install [MongoDB Community Edition](https://www.mongodb.com/try/download/community).  
+2. Clone this repository:  
+   ```bash
+   git clone https://github.com/your-username/urbanwave.git
+   cd urbanwave
